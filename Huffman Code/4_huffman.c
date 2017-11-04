@@ -2,7 +2,7 @@ typedef struct node{
 
 	unsigned char letter; // Caractere
 	int freq; 			  // Frequencia do caractere
-	void *next;    // Proxima da fila
+	struct node *next;    // Proxima da fila
 	struct node *left;    // Filho esquuerdo
 	struct node *right;   // Filho direito
 }Node;
@@ -52,9 +52,8 @@ Node *insert_node(Node *queue, Node *new_node){
 		// *** Usado no merge_node. ***
 
 		Node *aux = queue;
-		Node *aux2 = aux->next;
 
-		while(aux->next != NULL && new_node->freq > aux2->freq){
+		while(aux->next != NULL && new_node->freq > aux->next->freq){
 			
 			aux = aux->next;
 
