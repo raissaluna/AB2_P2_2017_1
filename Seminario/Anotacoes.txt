@@ -1,0 +1,20 @@
+Anotei umas observações que podem ser feitas na hora da apresentação, só pra ajudar a ganhar mais pontinhos :)
+
+*slide 2
+"Encontrar o menor caminho em mapas de jogos com pesos" (Andar na grama ou na areia, por exemplo, é mais trabalhoso que andar numa estrada.)
+"Viajar de uma cidade a outra usando o caminho de maior eficiência" (Indo daqui para Recife, por exemplo, se houver alguma manifestação com pneus bloqueando a passagem teríamos que voltar até o último ponto onde era possível pegar outro caminho.)
+
+*slide 3
+"Serve para encontrar o menor caminho entre dois pontos e visitar (e checar e/ou atualizar) cada nó do gráfico, respectivamente."
+
+*slide 4
+"Atribui para cada nó visitado um peso igual ao peso da aresta mais o valor aproximado da menor distancia entre aquele nó e o nó final." (Essa distância é calculada através da Heurística, técnica usada na computação para resolver problemas de um jeito mais rápido quando o modo clássico demora muito.)
+
+"A diferença entre A* e Dijkstra é que Dijkstra funciona melhor em algoritmos onde a eurística é 0, logo, a busca é feita se expandindo igualmente para fora em todas as direções." (Como vocês poderiam imaginar, por causa disso, Dijkstra normalmente acaba explorando uma área muito maior do mapa antes do objetivo ser achado, isto geralmente o faz ser mais lento que o A*.)
+
+*slide 8
+A* consegue encontrar o menor caminho entre dois pontos levando em consideração, no exemplo do jogo, tipos diferentes de terrenos e personagens (um personagem com habilidades aéreas levaria muito menos tempo que um terrestre) e no exemplo da estrada, bloqueios e quantidade de curvas no trajeto (que também alterariam o tempo da viagem pois é muito mais rápido se deslocar numa linha reta que fazendo curvas).
+
+ATENÇÃO!!!
+
+- O nome Dijkstra se pronuncia "Degstra", é Holandês!
