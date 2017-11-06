@@ -52,14 +52,14 @@ void decompress(char *new_file_path){
 	for (i = 0; i < 17; ++i){
 
 		header[i] = '\0';
-	} // Faço isso setando tudo pra NULL pra não ter problema de lixo;
+	} // Setando tudo pra NULL para não ter problema de lixo
 
-	for(i=0; i<2; i++){
+	for(i = 0; i < 2; i++){
 	// 2 por ser os dois primeiros bytes
-		for(j=7; j>=0; j--){
+		for(j = 7; j >= 0; j--){
 		// 7 por ser o tamanho do byte
 			if(is_bit_i_set(buffer[i], j) == 0){
-				header[strlen(header)] = '0'; // strlen é o tamanho da string como eu to escrevendo nela sempre, ela vai aumentar
+				header[strlen(header)] = '0'; // O tamanho da string sempre aumenta
 			}else{
 				header[strlen(header)] = '1';
 			}
@@ -69,10 +69,10 @@ void decompress(char *new_file_path){
 	size_trash = bin_int(header, 3);
 	size_tree = bin_int(header+3, 13);
 
-	char str_tree[size_tree + 1]; // Vai armazenar a arvore, o +1 é para guardar o /0
+	char str_tree[size_tree + 1]; // Armazena a arvore, o +1 é para guardar o /0
 
-	// Comeca no 2 pois eu ja li os dois primeiros bytes
-	// Agora eu quero ler a arvore
+	// i = 2 pois os 2 primeiros bytes já foram lidos
+	// Agora lendo a árvore
 	for(i = 2, pos = 0; i < size_tree + 2; i++, pos++){
 
 		fseek(compressed_file, i, SEEK_SET);
@@ -88,7 +88,7 @@ void decompress(char *new_file_path){
 	// O tamanho da arvore + 2; ele agora vai comecar a ler o texto codificado
 	fseek(compressed_file, size_tree + 2, SEEK_SET);
 	// Comecando a ir de bit em bit buscando uma folha na arvore
-	// ate (o total de bytes) - (o que eu ja li)) - (o byte de lixo)
+	// Ate (o total de bytes) - (o que eu ja li)) - (o byte de lixo)
 	unsigned int bit_cur = 0; //bit atual
 	for(i = 0; i < (total_bytes - (size_tree + 2)) - 1; i++){
 
