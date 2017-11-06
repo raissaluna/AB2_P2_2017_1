@@ -1,4 +1,4 @@
-#include "List.h"
+#include "Lista.h"
 
 node *createEmptyList(){
 
@@ -14,22 +14,18 @@ node *new_node(int item){
 }
 
 void insertNode(node **l, int item){
-	if(*l == NULL){
-
+	if(*l == NULL)
+	{
 		*l = new_node(item);
 	}
-	else{
-
-		insertNode(&(*l)->next, item);
-
-	}
+	else insertNode(&(*l)->next, item);
 }
 
 void print_list(node *l){
 
- 	if(l != NULL){
+ 	if(l != NULL) {
 
- 		printf("%d ", l->item);
+ 		printf("|%d| ", l->item);
  		print_list(l->next);
  	}
 }
@@ -37,12 +33,11 @@ void print_list(node *l){
 int search_list(node *l, int item){
 	int comparisons = 0;
 	while(l!=NULL){
-
-	 	if (l -> item == item) return comparisons+1;
-	 	comparisons++;
+		comparisons++;
+	 	if (l -> item == item) return comparisons;
 	 	l = l -> next;
 	}
-return comparisons;
+return -1;
 }
 
 void free_node(node **l){
@@ -57,10 +52,7 @@ void free_node(node **l){
 
 int size_list(node *l){
 
-	if(l == NULL){
-
-		return 0;
-	}
+	if(l == NULL) return 0;
 	return 1 + size_list(l -> next);
 }
 
