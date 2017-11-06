@@ -58,24 +58,24 @@ void print_tree_header(void *file, Node *huff){
 	}
 } // Trata o caso dos *
 
-int escreverArquivoCompactado(void *arquivoCompactar, void *arquivoCompactado, HashT *ht){
+int write_compressed_file(void *source_file, void *compressed_file, HashT *ht){
 
-	unsigned char byteLido;
+	unsigned char byteread;
 	unsigned char byte = 0;
 	char *bitshuff = NULL;
 	int bit_index = 7;
 	int i;
-	rewind(arquivoCompactar);
+	rewind(source_file);
 
-	while(fscanf(arquivoCompactar, "%c", &byteLido) > 0){
+	while(fscanf(source_file, "%c", &byteread) > 0){
 
-		bitshuff = getCharBits(ht, byteLido);//retorna o bit que representa esse caracter
+		bitshuff = getCharBits(ht, byteread);//retorna o bit que representa esse caracter
 		//printf("%s\n", bitshuff);
 		for(i = 0 ; i < strlen(bitshuff); ++i){
 
 			if(bit_index == -1){
 
-				fprintf(arquivoCompactado, "%c", byte);
+				fprintf(compressed_file, "%c", byte);
 				byte = 0;
 				bit_index = 7;
 			}
@@ -88,7 +88,7 @@ int escreverArquivoCompactado(void *arquivoCompactar, void *arquivoCompactado, H
 	}
 	if(bit_index <= 7){
 
-		fprintf(arquivoCompactado, "%c", byte);
+		fprintf(compressed_file, "%c", byte);
 	}
 	bit_index++;
 
@@ -150,7 +150,7 @@ void compress(void *file_name){
 	// printf("\nbin %s\n", tree_header_tam);
 	// printf("tamanho arvore %d\n", tree_size);
 
-	unsigned int lixo = escreverArquivoCompactado(source_file, compressed_file, hasht); // Pegando o tamanho do lixo
+	unsigned int lixo = write_compressed_file(source_file, compressed_file, hasht); // Pegando o tamanho do lixo
 
 	char *qtdLixo = (char*)malloc(4*sizeof(char));
 	int_bin(qtdLixo, lixo, 3);

@@ -41,15 +41,13 @@ char *getCharBits(HashT *ht, unsigned char c){
 	return ht -> table[(int)c] -> bitstring;
 }
 
-/* Pecorre a arvore e cria string com o caminho de cada letra; adicionando sempre na hash
- * direita 1, esquerda 0;
- * tem o esquema de corta o ultimo bit quando chamar a recussão(não to me lembrando bem)
- */
+// Pecorre a arvore e cria string com o caminho de cada letra; adicionando sempre na hash direita 1, esquerda 0
+
 void build_representations(Node *tree, unsigned char *bit_string, int index, unsigned char bit, HashT *ht){
 
 	if(index > -1){ // Se estiver em -1 foi a primeira chamada da função, portanto tree ainda é a raiz da árvore
 	
-		bit_string[index] = bit; // Vai sempre salvando o bit passado na pos correta da string
+		bit_string[index] = bit; // Vai sempre salvando o bit passado na posição correta da string
 		if(is_leaf(tree)){
 
 			bit_string[index + 1] = '\0';
@@ -57,8 +55,7 @@ void build_representations(Node *tree, unsigned char *bit_string, int index, uns
 			// printf("%s\n", bit_string);
 		}
 	}
-	// As chamadas recursivas vão para esquerda ou para direita, passando respectivamente 0 ou 1 como bits
-	// e incrementando o index para avançar na string, quando for feito o backtrack o index volta para o anterior
+	// As chamadas recursivas vão para esquerda ou para direita, passando respectivamente 0 ou 1 como bits e incrementando o index para avançar na string
 	if(tree->left != NULL){
 		
 		build_representations(tree->left, bit_string, index + 1, '0', ht);

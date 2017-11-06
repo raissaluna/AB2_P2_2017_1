@@ -20,7 +20,7 @@ void print_tree_header(void *file, Node *huff);
  * Retorna o tamanho do lixo
  * tem objetivo de escrever os bits no novo arquivo compactado
  */
-int escreverArquivoCompactado(void *arquivoCompactar, void *arquivoCompactado, HashT *ht);
+int write_compressed_file(void *souce_file, void *compressed_file, HashT *ht);
 
 /* Inicia a compressão do arquivo recebido
  */
