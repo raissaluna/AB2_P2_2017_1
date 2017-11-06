@@ -95,7 +95,7 @@ int main(){
 
     for(i = 0; i < array_size; i++){
 
-        insertNode(&List2, array[i]);
+        insertNode(&List2, array[i]); // Lista sequencial
     }
 
     // Randomizando o vetor
@@ -114,7 +114,7 @@ int main(){
 
     for(i = 0; i < array_size; i++){
 
-        insertNode(&List, array[i]);
+        insertNode(&List, array[i]); // Lista randômica que foi criada a partir do shuffle
         BinarySearchTree = insertNodeTree(BinarySearchTree, array[i]);
     }
 
@@ -144,9 +144,9 @@ int main(){
 
     // Os numeros sorteados representam os valores a serem buscados nas estruturas e são colocados como entrada da função (eixo-x). A saída (eixo-y) é o numero de comparacoes realizadas para encontrar este valor. Para cada estrutura haverá uma saida. Ou seja, estaa função retorna três números: "x y_lista y_arvore"
 
-    //create_data (array_size, List, BinarySearchTree);
+    //create_data (array_size, List, BinarySearchTree); // lista randomica com abb randomica, sem ser balanceada
 
-    create_data (array_size, List2, BinarySearchTree);
+    create_data (array_size, List2, BinarySearchTree); // lista sequencial numa abb randômica, sem ser balanceada, criando dados da coluna1(varios numeros a serem sorteados), coluna2(números de comparações da lista) e coluna3(numero de comparações da árvore)
 
     // int number_to_search = rand_interval(0, array_size);
 
