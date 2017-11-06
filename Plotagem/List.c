@@ -1,4 +1,4 @@
-#include "Lista.h"
+#include "List.h"
 
 node *createEmptyList(){
 
@@ -14,16 +14,20 @@ node *new_node(int item){
 }
 
 void insertNode(node **l, int item){
-	if(*l == NULL)
-	{
+	if(*l == NULL){
+
 		*l = new_node(item);
 	}
-	else insertNode(&(*l)->next, item);
+	else{
+
+		insertNode(&(*l)->next, item);
+
+	}
 }
 
 void print_list(node *l){
 
- 	if(l != NULL) {
+ 	if(l != NULL){
 
  		printf("%d ", l->item);
  		print_list(l->next);
@@ -53,7 +57,10 @@ void free_node(node **l){
 
 int size_list(node *l){
 
-	if(l == NULL) return 0;
+	if(l == NULL){
+
+		return 0;
+	}
 	return 1 + size_list(l -> next);
 }
 

@@ -1,17 +1,17 @@
 #include <limits.h>
 #include "BinarySearchTree.h"
-#include "Lista.h"
+#include "List.h"
 #include <time.h>
  
-void shuffle(int *array, size_t n) {
+void shuffle(int *array, size_t n){
 
     // Randomiza os elementos de um vetor qualquer
 
-    if (n > 1) 
-    {
+    if (n > 1){
+
         size_t i;
-        for (i = 0; i < n - 1; i++) 
-        {
+        for (i = 0; i < n - 1; i++){
+
           size_t j = i + rand() / (RAND_MAX / (n - i) + 1);
           int t = array[j];
           array[j] = array[i];
@@ -20,7 +20,7 @@ void shuffle(int *array, size_t n) {
     }
 }
 
-unsigned int rand_interval(unsigned int min, unsigned int max) {
+unsigned int rand_interval(unsigned int min, unsigned int max){
 
     // Dado um intervalo, esta função retorna um número aleatório que está dentro desse intervalo.
 
@@ -33,21 +33,21 @@ unsigned int rand_interval(unsigned int min, unsigned int max) {
      * the buckets until you land in one of them. All buckets are equally
      * likely. If you land off the end of the line of buckets, try again. */
 
-    do
-    {
+    do{
+
         r = rand();
-    } while (r >= limit);
+    }while(r >= limit);
 
     return min + (r / buckets);
 }
 
-void create_data (int array_size, node *List, Tree *BinarySearchTree) {
+void create_data (int array_size, node *List, Tree *BinarySearchTree){
 
     int numero_de_sorteios = 1000;
     int i;
     int number_to_search, y_lista, y_arvore;
 
-    for (i = 0; i < numero_de_sorteios; i++) {
+    for (i = 0; i < numero_de_sorteios; i++){
 
         number_to_search = rand_interval(0, array_size-1);
 
@@ -58,7 +58,7 @@ void create_data (int array_size, node *List, Tree *BinarySearchTree) {
     } 
 }
 
-int main() {
+int main(){
 
     int i, option;
     Tree* BinarySearchTree = createEmptyTree();
@@ -81,7 +81,8 @@ int main() {
 
     // Preenchendo o vetor de forma ordenada
 
-    for (i = 0; i < array_size; i++) {
+    for (i = 0; i < array_size; i++){
+
         array[i] = i;
     }
 
@@ -92,7 +93,7 @@ int main() {
     //     printf("%d ", array[i]);
     // }
 
-    for(i = 0; i < array_size; i++) {
+    for(i = 0; i < array_size; i++){
 
         insertNode(&List2, array[i]);
     }
@@ -111,7 +112,7 @@ int main() {
 
     // Colocando os dados nas estruturas
 
-    for(i = 0; i < array_size; i++) {
+    for(i = 0; i < array_size; i++){
 
         insertNode(&List, array[i]);
         BinarySearchTree = insertNodeTree(BinarySearchTree, array[i]);
